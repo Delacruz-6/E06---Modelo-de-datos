@@ -6,12 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Setter
 @Entity @Builder
 @NoArgsConstructor @AllArgsConstructor
-public class Profesor {
+public class Profesor implements Serializable {
 
     @Id
     @GeneratedValue
@@ -23,12 +25,13 @@ public class Profesor {
 
     private double puntuacion;
 
+    @Builder.Default
     @OneToMany(mappedBy="profesor")
-    private List<CursoOnline> cursos;
+    private List<CursoOnline> cursos = new ArrayList<>();;
 
     /**
      * MÉTODOS AUXILIARES Ó HELPERS
-     * ASOCIACION (CursoOnline / Profesor)
+     * ASOCIACION (CursoOnline 0* --- 1 Profesor)
      */
 
     public void addCurso(CursoOnline c) {

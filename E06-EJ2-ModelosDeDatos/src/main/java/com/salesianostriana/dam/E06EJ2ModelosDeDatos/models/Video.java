@@ -6,11 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import java.io.Serializable;
 
 @Entity @Builder
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
-public class Video {
+public class Video implements Serializable {
 
     @Id
     @GeneratedValue
